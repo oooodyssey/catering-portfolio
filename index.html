@@ -20,20 +20,21 @@
       padding: 0;
     }
 
-    /* カラーパレット（変数として定義しておくと後で色変更が楽） */
+    /* カラーパレット（ここを変えると全体の色が変わります） */
     :root {
-      --color-bg:      #FAF8F4;   /* 背景：温かみのあるクリーム */
-      --color-dark:    #2B1F18;   /* メインの文字色：深いブラウン */
-      --color-accent:  #8B6F47;   /* アクセント：テラコッタブラウン */
-      --color-card-bg: #FFFFFF;   /* カードの背景：白 */
-      --color-overlay: rgba(43, 31, 24, 0.55); /* 動画の上の暗いフィルター */
-      --font-serif:    'Cormorant Garamond', serif;
-      --font-sans:     'Noto Sans JP', sans-serif;
-      --border-radius: 12px;      /* カードの角丸 */
+      --color-bg:           #FFF8F3;   /* 背景：桜色がかったクリーム */
+      --color-dark:         #3D2A22;   /* メインの文字色：温かみのあるブラウン */
+      --color-accent:       #C8856A;   /* アクセント：テラコッタサーモン */
+      --color-accent-light: #F5E3D9;   /* アクセントの薄い版：ホバー背景など */
+      --color-card-bg:      #FFFAF7;   /* カードの背景：ほんのり温かい白 */
+      --color-overlay:      rgba(45, 22, 12, 0.48); /* 動画の上の暗いフィルター */
+      --font-serif:         'Cormorant Garamond', serif;
+      --font-sans:          'Noto Sans JP', sans-serif;
+      --border-radius:      20px;      /* カードの角丸（丸めにしてかわいく） */
     }
 
     html {
-      scroll-behavior: smooth; /* ページ内リンクをなめらかにスクロール */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -49,21 +50,20 @@
        ヘッダー（ナビゲーション）
        ========================================================= */
     header {
-      position: fixed;           /* 画面上部に固定 */
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;              /* 他の要素より前に表示 */
+      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(250, 248, 244, 0.9);
-      backdrop-filter: blur(8px); /* すりガラス効果 */
-      border-bottom: 1px solid rgba(43, 31, 24, 0.08);
+      background: rgba(255, 248, 243, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200, 133, 106, 0.15); /* アクセント色の細いライン */
     }
 
-    /* サイト名（ロゴ部分） */
     .site-name {
       font-family: var(--font-serif);
       font-size: 1.4rem;
@@ -73,24 +73,21 @@
       text-decoration: none;
     }
 
-    /* Instagramアイコンリンク */
     .instagram-link {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--color-dark);
+      color: var(--color-accent);   /* アクセント色に変更 */
       text-decoration: none;
       font-size: 0.8rem;
       letter-spacing: 0.12em;
-      opacity: 0.8;
       transition: opacity 0.3s;
     }
 
     .instagram-link:hover {
-      opacity: 1;
+      opacity: 0.7;
     }
 
-    /* InstagramのSVGアイコン */
     .instagram-link svg {
       width: 20px;
       height: 20px;
@@ -103,7 +100,7 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh;             /* 画面の高さ全体 */
+      height: 100vh;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -111,7 +108,6 @@
       text-align: center;
     }
 
-    /* 背景動画 */
     .hero-video {
       position: absolute;
       top: 50%;
@@ -121,17 +117,15 @@
       min-height: 100%;
       width: auto;
       height: auto;
-      object-fit: cover;         /* 画面全体を埋めるようにトリミング */
+      object-fit: cover;
     }
 
-    /* 動画の上にかぶせる暗いフィルター */
     .hero-overlay {
       position: absolute;
-      inset: 0;                  /* top:0; left:0; right:0; bottom:0; の省略 */
+      inset: 0;
       background: var(--color-overlay);
     }
 
-    /* ヒーローの文字（動画・フィルターより前に表示） */
     .hero-content {
       position: relative;
       z-index: 1;
@@ -139,33 +133,36 @@
     }
 
     .hero-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      opacity: 0.75;
+      opacity: 0.8;
       margin-bottom: 20px;
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 6vw, 5rem); /* 画面幅に合わせてサイズが変わる */
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
       font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: 0.05em;
-      margin-bottom: 24px;
+      line-height: 1.15;
+      letter-spacing: 0.06em;
+      margin-bottom: 28px;
     }
 
+    /* サブタイトルをイタリックにして上品さをプラス */
     .hero-subtitle {
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      opacity: 0.85;
     }
 
-    /* 動画がない場合の代替背景色 */
+    /* 動画がない場合の代替背景：温かみのあるグラデーション */
     .hero-placeholder {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #2B1F18 0%, #5C3D2E 100%);
+      background: linear-gradient(145deg, #3D2A22 0%, #7A4535 60%, #C8856A 100%);
     }
 
 
@@ -175,7 +172,7 @@
     .portfolio {
       padding: 96px 48px;
       max-width: 1200px;
-      margin: 0 auto;            /* 左右中央揃え */
+      margin: 0 auto;
     }
 
     /* セクション見出し */
@@ -184,12 +181,27 @@
       margin-bottom: 64px;
     }
 
+    /* ラベルの両側に細いラインを追加（かわいいアクセント） */
     .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--color-accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-accent);
+      opacity: 0.5;
     }
 
     .section-title {
@@ -202,8 +214,8 @@
     /* カードのグリッド（3列） */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3等分 */
-      gap: 28px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     /* 個々のカード */
@@ -211,22 +223,22 @@
       background: var(--color-card-bg);
       border-radius: var(--border-radius);
       overflow: hidden;
-      cursor: pointer;           /* クリックできることを示す手のカーソル */
-      box-shadow: 0 2px 16px rgba(43, 31, 24, 0.08);
+      cursor: pointer;
+      border: 1px solid rgba(200, 133, 106, 0.12); /* 薄いアクセント色のボーダー */
+      box-shadow: 0 4px 20px rgba(200, 133, 106, 0.08);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    /* ホバー時：少し浮き上がる */
+    /* ホバー時：浮き上がる＋ピンクがかった影 */
     .portfolio-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(43, 31, 24, 0.16);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(200, 133, 106, 0.22);
     }
 
-    /* カード内の画像エリア */
     .card-image-wrap {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 4 / 3;       /* 横4：縦3の比率を保つ */
+      aspect-ratio: 4 / 3;
     }
 
     .card-image-wrap img {
@@ -236,51 +248,49 @@
       transition: transform 0.5s ease;
     }
 
-    /* ホバー時：画像をわずかに拡大 */
     .portfolio-card:hover .card-image-wrap img {
       transform: scale(1.06);
     }
 
-    /* カードのテキスト部分 */
     .card-body {
-      padding: 20px 24px 0;
+      padding: 18px 22px 0;
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 400;
       letter-spacing: 0.03em;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
-    /* "View More" ボタン */
+    /* View More ボタン：アクセント色に */
     .card-footer {
       display: flex;
       justify-content: flex-end;
-      padding: 16px 24px 20px;
+      padding: 14px 22px 18px;
     }
 
     .btn-view-more {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--color-dark);
+      background: var(--color-accent);   /* テラコッタ色 */
       color: #fff;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 10px 20px;
+      padding: 9px 20px;
       border-radius: 30px;
       border: none;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
 
     .btn-view-more:hover {
-      background: var(--color-accent);
+      background: #B5745A;   /* 少し濃いテラコッタ */
+      transform: scale(1.03);
     }
 
-    /* ボタン内の矢印 */
     .btn-view-more .arrow {
       font-size: 0.9rem;
       transition: transform 0.3s;
@@ -295,29 +305,27 @@
        ライトボックス（クリック時に開く詳細モーダル）
        ========================================================= */
     .lightbox {
-      display: none;             /* 初期状態は非表示 */
+      display: none;
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(20, 14, 10, 0.88);
+      background: rgba(30, 15, 8, 0.82);
       align-items: center;
       justify-content: center;
       padding: 24px;
     }
 
-    /* .is-open クラスが付いたら表示 */
     .lightbox.is-open {
       display: flex;
     }
 
-    /* モーダルの白い枠 */
     .lightbox-modal {
       background: var(--color-bg);
       border-radius: var(--border-radius);
       width: 100%;
       max-width: 900px;
       max-height: 90vh;
-      overflow-y: auto;          /* 縦方向にスクロール可能 */
+      overflow-y: auto;
       position: relative;
       animation: modalFadeIn 0.3s ease;
     }
@@ -327,7 +335,6 @@
       to   { opacity: 1; transform: scale(1)    translateY(0); }
     }
 
-    /* 閉じるボタン (×) */
     .lightbox-close {
       position: absolute;
       top: 16px;
@@ -336,8 +343,8 @@
       height: 40px;
       border-radius: 50%;
       border: none;
-      background: rgba(43, 31, 24, 0.12);
-      color: var(--color-dark);
+      background: var(--color-accent-light);
+      color: var(--color-accent);
       font-size: 1.2rem;
       cursor: pointer;
       display: flex;
@@ -348,10 +355,9 @@
     }
 
     .lightbox-close:hover {
-      background: rgba(43, 31, 24, 0.25);
+      background: rgba(200, 133, 106, 0.3);
     }
 
-    /* メイン画像（大きく表示） */
     .lightbox-main-image {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -360,12 +366,11 @@
       display: block;
     }
 
-    /* サムネイル列（複数写真がある場合） */
     .lightbox-thumbs {
       display: flex;
       gap: 8px;
       padding: 12px 24px 0;
-      overflow-x: auto;          /* 横スクロール可能 */
+      overflow-x: auto;
     }
 
     .lightbox-thumbs button {
@@ -373,7 +378,7 @@
       width: 72px;
       height: 72px;
       border: 2px solid transparent;
-      border-radius: 6px;
+      border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
       padding: 0;
@@ -391,7 +396,6 @@
       object-fit: cover;
     }
 
-    /* テキスト部分 */
     .lightbox-info {
       padding: 24px 32px 32px;
     }
@@ -407,7 +411,7 @@
     .lightbox-desc {
       font-size: 0.9rem;
       line-height: 1.9;
-      color: #5a4a3a;
+      color: #7A5C50;
     }
 
 
@@ -416,35 +420,35 @@
        ========================================================= */
     footer {
       text-align: center;
-      padding: 48px 24px;
-      border-top: 1px solid rgba(43, 31, 24, 0.1);
+      padding: 56px 24px 48px;
+      border-top: 1px solid rgba(200, 133, 106, 0.2);
+      background: #FFF3EC;   /* フッターだけ少し濃いクリーム */
     }
 
     .footer-instagram {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--color-dark);
+      color: var(--color-accent);
       text-decoration: none;
       font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      padding: 14px 32px;
-      border: 1px solid rgba(43, 31, 24, 0.3);
+      letter-spacing: 0.18em;
+      padding: 14px 36px;
+      border: 1.5px solid var(--color-accent);
       border-radius: 30px;
       transition: all 0.3s;
-      margin-bottom: 32px;
-      display: inline-flex;
+      margin-bottom: 28px;
     }
 
     .footer-instagram:hover {
-      background: var(--color-dark);
+      background: var(--color-accent);
       color: #fff;
     }
 
     .footer-copy {
       font-size: 0.72rem;
       letter-spacing: 0.1em;
-      color: #999;
+      color: #B8998D;
     }
 
 
@@ -452,14 +456,12 @@
        レスポンシブ対応（スマホ・タブレット）
        ========================================================= */
     @media (max-width: 900px) {
-      /* タブレット：2列 */
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 600px) {
-      /* スマホ：1列 */
       header {
         padding: 16px 20px;
       }
@@ -506,21 +508,31 @@
        ========================================================= -->
   <section class="hero">
 
+    <!--
+      ★ 動画の差し替え方：
+        1. 動画ファイル（.mp4 推奨）を同じフォルダに入れる
+        2. src="your-video.mp4" の部分を変更する
+        3. 動画がない場合は <video> タグを削除してもOK（グラデーション背景になる）
+
+      autoplay : 自動再生
+      muted    : 音消し（自動再生にはmutedが必要）
+      loop     : ループ再生
+      playsinline : iPhoneで全画面にならず背景として再生
+    -->
     <div class="hero-placeholder"></div><!-- 動画読み込み中の代替背景 -->
 
     <!--
-      ★★★ 動画の更新方法 ★★★
-        1. 撮影した動画を "videos" フォルダに入れる
-        2. ファイル名を "hero.mp4" にする（または下の src を変更）
-        3. それだけで完了！
+      ★ 動画の差し替え方：
+        1. 動画ファイル（.mp4）を同じフォルダに入れる
+        2. src の URL を "自分の動画.mp4" に書き換えるだけ
 
-      注意: GitHubは100MB超のファイルはアップできません。
-            動画が大きい場合は圧縮してから使ってください。
+      autoplay    : 自動再生
+      muted       : 音消し（自動再生にはmutedが必要）
+      loop        : ループ再生
+      playsinline : iPhoneで全画面にならず背景として再生
     -->
     <video class="hero-video" autoplay muted loop playsinline>
-      <source src="videos/hero.mp4" type="video/mp4">
-      <!-- ↑ 自分の動画を入れたら上の行が使われます -->
-      <!-- 動画がない間は仮の動画を使います ↓ -->
+      <!-- ★ ここのURLを自分の動画ファイルに変更する -->
       <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
     </video>
 
@@ -594,95 +606,88 @@
   <script>
     /*
     ============================================================
-    ★★★ 作品を追加・更新するときはここだけ編集！ ★★★
+    ★★★ ここが一番大事！作品データを追加・編集してください ★★★
     ============================================================
 
-    【画像の更新手順】
-      1. 写真を "images" フォルダに入れる（例: sushi-1.jpg）
-      2. 下の thumb と images のパスを "images/sushi-1.jpg" に書き換える
-      3. GitHubにアップロードすればサイトに反映される
-
-    【作品を追加する手順】
-      1. 下のリストの末尾に , { ... } を追加する
-      2. 画像を images フォルダに入れる
-      3. GitHubにアップロードして完了
+    各作品は {} で囲まれた1つのオブジェクトです。
+    , (カンマ) で区切って作品を追加していきます。
 
     各項目の説明：
-      title  : カードに表示する作品名
-      thumb  : 一覧のサムネイル画像（1枚）
-      images : 詳細で表示する画像（複数枚OK → スライドになる）
-      desc   : 詳細に表示する説明文
+      title   : 作品名
+      thumb   : 一覧に表示するサムネイル画像のパス
+      images  : 詳細で表示する画像の配列（複数入れるとスライドになる）
+      desc    : 詳細に表示する説明文
+
+    画像ファイルの置き方：
+      1. このHTMLと同じフォルダに "images" フォルダを作る
+      2. 画像を入れる
+      3. パスを "images/ファイル名.jpg" のように書く
     ============================================================
+    */
+    /*
+      ★ 画像の差し替え方：
+        "https://picsum.photos/..." の部分を自分の画像パスに変更する
+        例: "images/sushi-1.jpg"  （同じフォルダに images/ フォルダを作って画像を入れる）
+
+      ★ Instagramは HTML内の "catering.portfolio.demo" を自分のIDに変更する（2箇所）
     */
     const works = [
       {
         title: "【Live】出張寿司職人",
-        thumb: "images/sushi-thumb.jpg",          /* ← 仮：写真が来たら差し替え */
+        thumb: "https://picsum.photos/seed/sushi1/800/600",
         images: [
-          "images/sushi-1.jpg",                   /* ← 仮：写真が来たら差し替え */
-          "images/sushi-2.jpg",
-          "images/sushi-3.jpg"
+          "https://picsum.photos/seed/sushi1/1200/800",
+          "https://picsum.photos/seed/sushi2/1200/800",
+          "https://picsum.photos/seed/sushi3/1200/800"
         ],
         desc: "新鮮な食材を目の前で握る出張寿司。ゲストの目を楽しませながら、できたての一貫をお届けします。試作では握り方・ネタの組み合わせ・演出を検討しました。"
       },
       {
         title: "【Live】マグロ解体ショー",
-        thumb: "images/maguro-thumb.jpg",
+        thumb: "https://picsum.photos/seed/maguro1/800/600",
         images: [
-          "images/maguro-1.jpg",
-          "images/maguro-2.jpg"
+          "https://picsum.photos/seed/maguro1/1200/800",
+          "https://picsum.photos/seed/maguro2/1200/800"
         ],
         desc: "豪快なマグロ解体ショーは会場を一気に盛り上げます。解体後はすぐにお刺身やにぎり寿司としてゲストへ振る舞うことを想定しています。"
       },
       {
         title: "【Live】ローストビーフカッティングサービス",
-        thumb: "images/roastbeef-thumb.jpg",
+        thumb: "https://picsum.photos/seed/beef1/800/600",
         images: [
-          "images/roastbeef-1.jpg",
-          "images/roastbeef-2.jpg"
+          "https://picsum.photos/seed/beef1/1200/800",
+          "https://picsum.photos/seed/beef2/1200/800"
         ],
         desc: "丁寧に火入れしたローストビーフを目の前でスライス。ゲストのお皿に直接盛り付けるライブサービス形式の試作です。"
       },
       {
         title: "オーダーメイドケーキ",
-        thumb: "images/cake-thumb.jpg",
+        thumb: "https://picsum.photos/seed/cake1/800/600",
         images: [
-          "images/cake-1.jpg",
-          "images/cake-2.jpg"
+          "https://picsum.photos/seed/cake1/1200/800",
+          "https://picsum.photos/seed/cake2/1200/800"
         ],
         desc: "イベントのテーマやゲストに合わせてデザインするオーダーメイドケーキ。装飾・フレーバー・サイズのカスタマイズ対応を検討中です。"
       },
       {
         title: "【Live】たこ焼き屋台",
-        thumb: "images/takoyaki-thumb.jpg",
+        thumb: "https://picsum.photos/seed/tako1/800/600",
         images: [
-          "images/takoyaki-1.jpg",
-          "images/takoyaki-2.jpg"
+          "https://picsum.photos/seed/tako1/1200/800",
+          "https://picsum.photos/seed/tako2/1200/800"
         ],
         desc: "会場に屋台を設置してその場で焼き立てを提供。外はカリッと中はとろっとした本格たこ焼きをゲストに楽しんでいただく演出です。"
       },
       {
         title: "巻き寿司 〜マグロたたきのせ〜",
-        thumb: "images/makizushi-thumb.jpg",
+        thumb: "https://picsum.photos/seed/maki1/800/600",
         images: [
-          "images/makizushi-1.jpg",
-          "images/makizushi-2.jpg"
+          "https://picsum.photos/seed/maki1/1200/800",
+          "https://picsum.photos/seed/maki2/1200/800"
         ],
         desc: "彩り豊かなカリフォルニアロールスタイルの巻き寿司。マグロのたたきをトッピングしたビジュアル重視の試作品です。"
       }
-
-      /* ★ 作品を追加する場合はここに続けて書く（カンマを忘れずに）：
-      ,
-      {
-        title: "新しい作品名",
-        thumb: "images/新作-thumb.jpg",
-        images: [
-          "images/新作-1.jpg",
-          "images/新作-2.jpg"
-        ],
-        desc: "説明文をここに書く。"
-      }
-      */
+      /* ★ 作品を追加する場合はここに , { ... } を書き足す */
     ];
 
 
